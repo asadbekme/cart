@@ -1,4 +1,5 @@
-# Practice, practice and practice
+# Practice, practice and practice.
+# Practice makes perfect!
 # Redux Toolkit
 
 #### Docs

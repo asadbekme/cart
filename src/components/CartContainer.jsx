@@ -3,7 +3,7 @@ import { openModal } from "../features/modal/modalSlice";
 import CartItem from "./CartItem";
 
 const CartContainer = () => {
-  const { cartItems, total, amount } = useSelector((store) => store.cart)
+  const { cartItems, total, amount } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
   if (amount < 1) {
@@ -24,13 +24,9 @@ const CartContainer = () => {
       </header>
 
       <div>
-        {
-          cartItems.map((item) => {
-            return (
-              <CartItem key={item.id} {...item} />
-            );
-          })
-        }
+        {cartItems.map((item) => {
+          return <CartItem key={item.id} {...item} />;
+        })}
       </div>
 
       <footer>
@@ -40,7 +36,7 @@ const CartContainer = () => {
             total <span>${total.toFixed(2)}</span>
           </h4>
         </div>
-        <button 
+        <button
           className="btn clear-btn"
           onClick={() => {
             dispatch(openModal());
@@ -51,6 +47,6 @@ const CartContainer = () => {
       </footer>
     </section>
   );
-}
+};
 
 export default CartContainer;

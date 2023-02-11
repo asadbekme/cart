@@ -10,21 +10,19 @@ const initialState = {
   amount: 4,
   total: 0,
   isLoading: false
-}
+};
 
-export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
-  try {
-    // console.log(name);
-    // console.log(thunkAPI);
-    // console.log(thunkAPI.getState());
-    // thunkAPI.dispatch(openModal())
-    const response = await axios(url);
-
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue("Something went wrong")
-  }
-})
+export const getCartItems = createAsyncThunk(
+  'cart/getCartItems', 
+  async (name, thunkAPI) => {
+    try {
+      console.log(name);
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("Something went wrong")
+    }
+});
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -38,7 +36,6 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((item) => item.id !== itemId)
     },
     increase: (state, { payload }) => {
-      // console.log(payload);
       const cartItem = state.cartItems.find((item) => item.id === payload.id);
       cartItem.amount = cartItem.amount + 1;
     },
@@ -63,17 +60,14 @@ const cartSlice = createSlice({
       state.isLoading = true;
     },
     [getCartItems.fulfilled]: (state, action) => {
-      // console.log(action);
       state.isLoading = false;
       state.cartItems = action.payload;
     },
     [getCartItems.rejected]: (state, action) => {
-      // console.log(action);
       state.isLoading = false;
     }
   }
-})
+});
 
-// console.log(cartSlice); 
-export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions;
 export default cartSlice.reducer;
+export const { clearCart, removeItem, increase, decrease, calculateTotals } = cartSlice.actions;

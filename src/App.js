@@ -15,7 +15,7 @@ const App = () => {
   }, [cartItems])
 
   useEffect(() => {
-    dispatch(getCartItems('random'));
+    dispatch(getCartItems('createAsyncThunk'));
   }, [])
 
   if (isLoading) {

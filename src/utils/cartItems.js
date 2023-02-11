@@ -1,5 +1,4 @@
-const cartItems = [
-  {
+const cartItems = [{
     id: 'rec1JZlfCIBOPdcT2',
     title: 'Samsung Galaxy S8',
     price: '399.99',
@@ -22,7 +21,7 @@ const cartItems = [
     img: 'https://dl.airtable.com/.attachments/bae9208dc34f35128749ecda5b999e84/337c285d/phone-3_h2s6fo.png',
     amount: 1,
   },
-  
+
   {
     id: 'recwTo160XST3PIoW',
     title: 'Samsung Galaxy S7',
